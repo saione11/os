@@ -5,7 +5,7 @@ Items Manage
 -create controller (--resource)
 -show route list (route:list)
 -create blades (4 for get method)
--call specified views
+-call specified views in controller
 -use store method (Form action)
   -dd
   -validation

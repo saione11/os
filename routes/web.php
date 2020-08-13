@@ -17,3 +17,9 @@ Route::get('/','Backendcontroller@dashboard')->name('dashboard');
    
 Route::resource('items','ItemController');
 // 7 (get-4,post-1,pull-1,delete-1)
+
+Route::resource('brands','BrandController');
+
+Route::resource('categories','CategoryController');
+
+Route::resource('subcategories','SubcategoryController');

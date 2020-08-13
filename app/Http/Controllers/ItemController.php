@@ -16,7 +16,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('backend.items.index');
+        $items=Item::all();
+        // dd($items);
+        return view('backend.items.index',compact('items'));
     }
 
     /**
@@ -54,7 +56,6 @@ class ItemController extends Controller
         //if include file,upload
         //file upload
         $imageName=time().'.'.$request->item_photo->extension();
-
         $request->item_photo->move(public_path('backend/itemimg'),$imageName);
         $myfile='backend/itemimg/'.$imageName;
 
@@ -90,7 +91,10 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-       return view('backend.items.show');
+        $item=Item::find($id);
+        // dd($item);
+       return view('backend.items.show',compact('item'));
+
     }
 
     /**
@@ -101,7 +105,11 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.items.edit');
+        $brands=Brand::all();
+        $subcategories=Subcategory::all();
+        $item=Item::find($id);
+        // dd($item);
+        return view('backend.items.edit',compact('brands','subcategories','item'));
     }
 
     /**
@@ -113,7 +121,46 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+
+         $request->validate([
+            'item_codeno'=>'required|min:4',
+            'item_name'=>'required',
+            'item_photo'=>'sometimes',
+            'unit_price'=>'required',
+            'discount_price'=>'required',
+            'item_des'=>'required',
+            'brand_id'=>'required',
+            'subcategory_id'=>'required'
+        ]);
+
+         if($request->hasFile('photo')){
+
+
+        $imageName=time().'.'.$request->item_photo->extension();
+        $request->item_photo->move(public_path('backend/itemimg'),$imageName);
+        $myfile='backend/itemimg/'.$imageName;
+        // delete old photo(unlink)
+
+
+        }else{
+             $myfile=$request->oldphoto;
+        }
+
+        // Data insert
+        $item=Item::find($id);
+        $item->codeno=$request->item_codeno;
+        $item->name=$request->item_name;
+        $item->photo=$myfile;
+        $item->price=$request->unit_price;
+        $item->discount=$request->discount_price;
+        $item->description=$request->item_des;
+        $item->brand_id=$request->brand_id;
+        $item->subcategory_id=$request->subcategory_id;
+        $item->save();
+
+         return redirect()->route('items.index');
+
     }
 
     /**
@@ -124,6 +171,9 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item=Item::find($id);
+        $item->delete();
+
+        return redirect()->route('items.index');
     }
 }
