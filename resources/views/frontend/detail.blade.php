@@ -17,10 +17,19 @@
 					<p>Description :{{$item->description}}<br></p>
 					<p>Brand :{{$item->brand->name}}</p>
 					<p>Subcategory :{{$item->subcategory->name}}</p>
+					<a href="#" class="btn btn-info cart" 
+                data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo=" {{$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" >Add to Cart</a>
 
 				</div>
 			</div>
 		</div>
 		
 	</div>
+@endsection
+
+
+@section('script')
+<script type="text/javascript" src="{{asset('frontend/js/script.js')}}">
+  
+</script>
 @endsection

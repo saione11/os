@@ -3,33 +3,24 @@
 @section('content')
 <div class="col-lg-9"> 
 	<div id="checkout_body">
-		<div class="container py-3 text-center">
+		<div class="container py-3">
 			<div class="row">
 				<div class="offset-md-2 col-md-9">
-					<h3 class=" py-3">Check Out</h3>
+					<h3 class="text-center py-3">Check Out</h3>
 					<div class="table-responsive">
 						<table class="table">
 							<thead>
 								<tr>
 									<th>No.</th>
 									<th>Item Name</th>
+									<th>Photo</th>
 									<th>Price</th>
 									<th>Qty</th>
 									<th>Sub Total</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Iphone 11</td>
-									<td>1200000</td>
-									<td>1</td>
-									<td>1200000</td>
-								</tr>
-								<tr>
-									<td colspan="4">Total</td>
-									<td>1200000</td>
-								</tr>
+								
 							</tbody>
 						</table>
 
@@ -44,13 +35,24 @@
 				</div>
 
 				<div class="offset-2 col-md-3 text-left">
-					<a href="#" class="btn btn-info">Continue Shopping</a>
+					<a href="{{route('homepage')}}" class="btn btn-info">Continue Shopping</a>
 				</div>
 				<div class="offset-4 col-md-3 text-left">
-						<button class="btn btn-info buy_now">Buy Now</button>
+					@auth
+					<a href="#" class="btn btn-info buy_now">Check Out</a>
+					@else
+					<a href="{{route('login')}}" class="btn btn-info">Login To Check Out</a>
+					@endauth
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+@endsection
+
+
+@section('script')
+<script type="text/javascript" src="{{asset('frontend/js/script.js')}}">
+  
+</script>
 @endsection

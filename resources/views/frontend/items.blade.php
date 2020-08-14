@@ -17,7 +17,8 @@
                 <p class="card-text">{{$item->description}}</p>
               </div>
               <div class="card-footer">
-               	<a href="#" class="btn btn-info">Add to Cart</a>
+               	<a href="#" class="btn btn-info cart"
+                 data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo=" {{$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" >Add to Cart</a>
                	<a href="{{route('detail',$item->id)}}" class="btn btn-primary">Detail</a>
               </div>
             </div>
@@ -28,4 +29,10 @@
 
         </div>
 	</div>
+@endsection
+
+@section('script')
+<script type="text/javascript" src="{{asset('frontend/js/script.js')}}">
+  
+</script>
 @endsection
