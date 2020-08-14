@@ -13,7 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','Backendcontroller@dashboard')->name('dashboard');
+Route::get('/','FrontendController@home')->name('homepage');
+
+Route::get('frontitem','FrontendController@frontitem')->name('frontitem');
+
+Route::get('login','FrontendController@login')->name('login');
+
+Route::get('register','FrontendController@register')->name('register');
+
+Route::get('checkout','FrontendController@checkout')->name('checkout');
+
+Route::get('about','FrontendController@about')->name('about');
+
+Route::get('contact','FrontendController@contact')->name('contact');
+
+Route::get('detail/{id}','FrontendController@detail')->name('detail');
+
+Route::get('profile','FrontendController@profile')->name('profile');
+
+
+Route::get('dashboard','Backendcontroller@dashboard')->name('dashboard');
    
 Route::resource('items','ItemController');
 // 7 (get-4,post-1,pull-1,delete-1)

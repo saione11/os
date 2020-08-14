@@ -134,13 +134,15 @@ class ItemController extends Controller
             'subcategory_id'=>'required'
         ]);
 
-         if($request->hasFile('photo')){
+         if($request->hasFile('item_photo')){
 
 
         $imageName=time().'.'.$request->item_photo->extension();
         $request->item_photo->move(public_path('backend/itemimg'),$imageName);
         $myfile='backend/itemimg/'.$imageName;
         // delete old photo(unlink)
+            $oldphoto=$request->oldphoto;
+            unlink($oldphoto);
 
 
         }else{
