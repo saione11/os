@@ -42,3 +42,21 @@ Backend
 -create view (index.blade.php)
 -show table (order list)
 -OrderController /index
+
+
+//Deployment Laravel Project
+
+-create subdomain
+-enter into subdomain using SSH 
+ ssh -p 7822 username@domain.me
+-ls
+-cd subdomain
+-git clone
+-enter into folder (cd)
+-cp .env.example .env
+-composer install
+-php artisan key:generate
+
+In cpanel
+-create a database and user
+-Add user to Database 
