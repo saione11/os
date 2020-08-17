@@ -29,4 +29,16 @@ UI
 -register page
 -login page
 
+14/8/2020
+----------
+Frontend
+-item page(data binding)
+-profile page(link/retrieve)
+-auth (multi role)
 
+Backend
+-Order Retrieved
+-(backend/orders folder)
+-create view (index.blade.php)
+-show table (order list)
+-OrderController /index

@@ -218,7 +218,7 @@ $.ajaxSetup({
 			// var shopArray=JSON.parse(shopString);
 			$.post('/orders',{shop_data:shopString,notes:notes},function(response){
 				if (response){
-					alert(response);
+					// alert(response);
 					localStorage.clear();
 					getData();
 					location.href="/";
