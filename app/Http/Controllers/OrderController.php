@@ -11,8 +11,8 @@ class OrderController extends Controller
 
     public function __construct($value='')
     {
-       $this->middleware('role;admin')->except('store');
-       $this->middleware('role;customer')->only('store');
+       $this->middleware('role:admin')->except('store');
+       $this->middleware('role:customer')->only('store');
 
     }
     /**
@@ -23,10 +23,13 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $orders=Order::all();
+        // dd($items);
+        return view('backend.orders.index',compact('orders'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource
      *
      * @return \Illuminate\Http\Response
      */
@@ -78,7 +81,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order=Order::find($id);
+        return view('backend.orders.show',compact('order'));
     }
 
     /**
